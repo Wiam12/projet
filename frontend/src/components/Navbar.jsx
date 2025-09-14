@@ -1,123 +1,93 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FaUserCircle, FaCog, FaSignOutAlt } from "react-icons/fa";
+// components/Navbar.jsx
+import React from "react";
+import { Navbar, Nav, NavDropdown, Container, Badge } from "react-bootstrap";
+import { FaBell, FaUserCircle, FaCog, FaSignOutAlt } from "react-icons/fa";
 
-const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+const NavbarComponent = () => {
   return (
-    <nav style={{
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "12px 30px",
-      backgroundColor: "#2563eb",
-      color: "#fff",
+    <Navbar expand="lg" sticky="top" style={{
+      background: "linear-gradient(90deg, #f3f4f6, #e5e7eb)", // subtil dégradé clair
+      color: "#1f2937",
+      padding: "0.5rem 1.5rem",
       boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-      position: "sticky",
-      top: 0,
-      zIndex: 1000,
+      borderRadius: "0 0 12px 12px"
     }}>
-      {/* Logo + Company Name */}
-      <Link to="/" style={{ display: "flex", alignItems: "center", gap: "12px", fontWeight: "bold", fontSize: "20px", color: "#fff" }}>
-        <div style={{
-          width: "40px",
-          height: "40px",
-          borderRadius: "50%",
-          background: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#2563eb",
-          fontWeight: "bold",
-          fontSize: "18px"
-        }}>C</div>
-        <span>Company Name</span>
-      </Link>
-
-      {/* Account Dropdown */}
-      <div style={{ position: "relative", display: "flex", alignItems: "center", gap: "10px", cursor: "pointer" }}
-           onClick={() => setMenuOpen(!menuOpen)}>
-        <span style={{ fontWeight: 500 }}>Account</span>
-        <div style={{
-          width: "38px",
-          height: "38px",
-          borderRadius: "50%",
-          background: "#f97316",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#fff",
-          fontWeight: "bold",
-          fontSize: "16px"
-        }}>U</div>
-
-        {menuOpen && (
+      <Container fluid className="d-flex align-items-center justify-content-between">
+        {/* Logo */}
+        <Navbar.Brand href="/" className="d-flex align-items-center gap-2">
           <div style={{
-            position: "absolute",
-            top: "50px",
-            right: 0,
-            background: "#fff",
-            color: "#333",
-            borderRadius: "8px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-            overflow: "hidden",
-            minWidth: "180px",
-            animation: "fadeIn 0.2s ease-in-out",
-          }}>
-            <Link
-              to="/profile"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "12px 15px",
-                textDecoration: "none",
-                color: "#333",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#f0f0f0"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#fff"}
-            >
-              <FaUserCircle /> Profile
-            </Link>
-            <Link
-              to="/settings"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "12px 15px",
-                textDecoration: "none",
-                color: "#333",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#f0f0f0"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#fff"}
-            >
-              <FaCog /> Settings
-            </Link>
-            <Link
-              to="/logout"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "12px 15px",
-                textDecoration: "none",
-                color: "#333",
-                transition: "background 0.2s",
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.background = "#f0f0f0"}
-              onMouseLeave={(e) => e.currentTarget.style.background = "#fff"}
-            >
-              <FaSignOutAlt /> Logout
-            </Link>
-          </div>
-        )}
-      </div>
-    </nav>
+            width: "45px",
+            height: "45px",
+            borderRadius: "50%",
+            backgroundColor: "#4f46e5", // violet accent
+            color: "#fff",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: "bold",
+            fontSize: "22px",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.15)"
+          }}>C</div>
+          <span style={{ fontWeight: 600, fontSize: "18px", color: "#1f2937" }}>Company Name</span>
+        </Navbar.Brand>
+
+        {/* Toggle pour mobile */}
+        <Navbar.Toggle aria-controls="navbar-nav" className="border-0" />
+
+        {/* Menu */}
+        <Navbar.Collapse id="navbar-nav" className="justify-content-end align-items-center">
+          <Nav className="align-items-center gap-3">
+            {/* Notifications */}
+            <Nav.Link href="#notifications" className="position-relative text-dark">
+              <FaBell size={20} />
+              <Badge pill bg="danger" style={{
+                position: "absolute",
+                top: "-5px",
+                right: "-5px",
+                fontSize: "10px",
+                fontWeight: "600"
+              }}>3</Badge>
+            </Nav.Link>
+
+            {/* Utilisateur avec statut */}
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <div style={{
+                width: "12px",
+                height: "12px",
+                borderRadius: "50%",
+                backgroundColor: "#10b981", // vert = en ligne
+              }}></div>
+              <NavDropdown
+                title={<span className="d-flex align-items-center gap-1"><FaUserCircle /> Admin</span>}
+                id="account-dropdown"
+                align="end"
+              >
+                <NavDropdown.Item href="#profile"><FaUserCircle className="text-primary" /> Profile</NavDropdown.Item>
+                <NavDropdown.Item href="#settings"><FaCog className="text-success" /> Settings</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#logout" className="text-danger"><FaSignOutAlt /> Logout</NavDropdown.Item>
+              </NavDropdown>
+            </div>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+
+      <style jsx>{`
+        .nav-link, .dropdown-item {
+          transition: background 0.2s, color 0.2s;
+          border-radius: 8px;
+        }
+        .nav-link:hover, .dropdown-item:hover {
+          background-color: rgba(79, 70, 229, 0.1);
+          color: #1f2937 !important;
+        }
+        .navbar-brand span {
+          letter-spacing: 0.5px;
+        }
+      `}</style>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default NavbarComponent;
+
