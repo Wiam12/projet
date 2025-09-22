@@ -1,0 +1,215 @@
+/* Variables */
+$primary-color: #3498db;  /* Bleu clair */
+$secondary-color: #2ecc71;  /* Vert clair */
+$background-color: #f5f7fa;  /* Gris clair */
+$border-color: #bdc3c7;  /* Gris foncé pour les bordures */
+$text-color: #2c3e50;  /* Gris foncé pour le texte */
+$hover-color: darken($primary-color, 10%);  /* Bleu foncé pour le survol */
+$ccc: #ccc;  /* Gris clair */
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h1 {
+    color: $primary-color;
+    font-size: 32px;
+    font-weight: bold;
+  }
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 40px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    color: $primary-color;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="file"] {
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  background-color: white;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+
+  &:focus {
+    border-color: $primary-color;
+    background-color: #d5eaf7;  /* Légèrement bleu */
+    outline: none;
+  }
+}
+
+/* Buttons */
+button {
+  padding: 12px 20px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+button.switch-btn {
+  background-color: $secondary-color;
+  &:hover {
+    background-color: darken($secondary-color, 20%);
+  }
+}
+
+/* Layout and Spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Card-style Layout for Sections */
+.section-card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 20px;
+  width: 48%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: 10px;
+  }
+
+  .card-content {
+    font-size: 1rem;
+    color: $text-color;
+  }
+
+  .card-button {
+    background-color: $secondary-color;
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+}
+
+/* File Upload Section */
+.file-upload {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.file-upload input[type="file"] {
+  width: auto;
+  display: inline-block;
+}
+
+.file-upload-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+input[type="file"] {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid $ccc;
+  border-radius: 4px;
+}
+
+.file-upload .btn-upload-file {
+  padding: 10px 20px;
+  background-color: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+/* Toggle between Create and Existing Category */
+.toggle-category {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.toggle-category button {
+  padding: 12px 20px;
+  background-color: $secondary-color;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+

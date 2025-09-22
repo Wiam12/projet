@@ -1,0 +1,164 @@
+/* --- Variables --- */
+$primary-color: #3498db;      /* Bleu clair */
+$secondary-color: #2ecc71;    /* Vert clair */
+$background-color: #ecf0f1;   /* Gris clair */
+$border-color: #bdc3c7;       /* Gris pour bordures */
+$text-color: #2c3e50;         /* Gris foncé pour texte */
+$hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
+
+/* --- Conteneur général de la page --- */
+.account-project-container {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+
+  /* --- En-tête de page (header) --- */
+  .page-header {
+    h1 {
+      background-color: $primary-color;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin: 0 0 20px;
+      font-size: 1.35rem;
+      font-weight: 600;
+    }
+  }
+
+  /* --- Titres de sections (h2) --- */
+  h2 {
+    color: $text-color;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 16px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 1.4;
+    border-left: 6px solid $primary-color;
+    padding-left: 12px;
+    background-color: transparent;
+  }
+
+  /* --- Cartes/sections principales --- */
+  .section {
+    margin-bottom: 24px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+
+    /* --- Paragraphes dans les sections --- */
+    p {
+      margin-bottom: 12px;
+      color: darken($text-color, 8%);
+      font-size: 0.95rem;
+    }
+  }
+
+  /* --- Formulaires (input) --- */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+
+    label {
+      font-size: 1rem;
+      color: darken($text-color, 8%);
+      font-weight: 500;
+    }
+
+    input[type="text"], input[type="file"] {
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 350px;
+      background-color: white;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+
+      &:focus {
+        border-color: $primary-color;
+        background-color: #d5eaf7;
+        outline: none;
+      }
+    }
+  }
+
+  /* --- Boutons --- */
+  button {
+    padding: 12px 20px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    /* Ajout d'un espacement au-dessus du bouton */
+    margin-top: 16px;
+
+    &:hover {
+      background-color: $hover-color;
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  /* --- Bouton switch entre les comptes --- */
+  .switch-btn {
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+
+  /* --- Groupes de fichiers à uploader --- */
+  .file-upload-group {
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+
+    input[type="file"] {
+      display: inline-block;
+      padding: 5px;
+    }
+
+    .file-name {
+      font-size: 0.9rem;
+      color: $text-color;
+      margin-left: 10px;
+    }
+  }
+
+  /* --- Section Toggle (changer de compte ou projet) --- */
+  .toggle-category {
+    margin-top: 12px;
+    text-align: center;
+
+    button {
+      background-color: $secondary-color;
+      padding: 12px 20px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+
+      &:hover {
+        background-color: darken($secondary-color, 10%);
+      }
+    }
+  }
+}
+
