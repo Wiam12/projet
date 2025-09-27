@@ -29,12 +29,12 @@ const AcceptanceTerm = () => {
   return (
     <div className="acceptance-term-container">
       <header className="page-header">
-        <h1>Acceptance Term Management</h1>
+
       </header>
 
       {/* Category Creation Section */}
       <section className="section category-creation">
-        <h2>Category Items</h2>
+                <h2> 1. Category items </h2>
         <p>Choose whether to create a new category or use an existing one.</p>
 
         {/* Category Creation or Selection */}

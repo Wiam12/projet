@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
+        
         <Fragment>
             <footer className="footer mt-auto py-3 bg-white text-center">
                 <div className="container">

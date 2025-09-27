@@ -1,11 +1,11 @@
 /* Variables */
-$primary-color: #3498db;  /* Bleu clair */
-$secondary-color: #2ecc71;  /* Vert clair */
-$background-color: #f5f7fa;  /* Gris clair */
-$border-color: #bdc3c7;  /* Gris foncé pour les bordures */
-$text-color: #2c3e50;  /* Gris foncé pour le texte */
-$hover-color: darken($primary-color, 10%);  /* Bleu foncé pour le survol */
-$ccc: #ccc;  /* Gris clair */
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #f5f7fa;
+$border-color: #bdc3c7;
+$text-color: #2c3e50;
+$hover-color: darken($primary-color, 10%);
+$card-shadow: 0 2px 8px rgba(0,0,0,0.07);
 
 /* Global Styles */
 body {
@@ -19,40 +19,51 @@ body {
 /* Header */
 .page-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 
   h1 {
     color: $primary-color;
-    font-size: 32px;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0;
   }
 }
 
 /* Section Styles */
 .section {
-  margin-bottom: 40px;
-  padding: 30px;
+  margin-bottom: 32px;
+  padding: 24px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: $card-shadow;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(52,152,219,0.08);
+  }
 
   h2 {
     color: $primary-color;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    border-left: 5px solid $secondary-color;
+    padding-left: 14px;
+    background-color: transparent;
   }
 
   p {
     color: #777;
-    font-size: 16px;
-    margin-bottom: 20px;
+    font-size: 1rem;
+    margin-bottom: 18px;
   }
 }
 
 /* Form Inputs */
 input[type="text"],
 input[type="file"] {
-  padding: 12px;
+  padding: 14px;
   margin-top: 8px;
   margin-bottom: 16px;
   width: 100%;
@@ -60,48 +71,75 @@ input[type="file"] {
   border: 1px solid $border-color;
   border-radius: 8px;
   background-color: white;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
 
   &:focus {
     border-color: $primary-color;
-    background-color: #d5eaf7;  /* Légèrement bleu */
+    box-shadow: 0 0 0 2px rgba(52,152,219,0.15);
     outline: none;
   }
 }
 
 /* Buttons */
-button {
-  padding: 12px 20px;
+button,
+.btn-switch-green {
+  padding: 14px 24px;
   background-color: $primary-color;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(52,152,219,0.07);
 
   &:hover {
     background-color: $hover-color;
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.03);
   }
 
   &:active {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
-button.switch-btn {
+.btn-switch-green {
   background-color: $secondary-color;
+
   &:hover {
-    background-color: darken($secondary-color, 20%);
+    background-color: darken($secondary-color, 8%);
   }
 }
 
-/* Layout and Spacing */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+/* Toggle between Create and Existing Category */
+.toggle-category {
+  text-align: center;
+  margin-top: 20px;
+
+  button {
+    padding: 14px 24px;
+    background-color: $secondary-color;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 6px rgba(46,204,113,0.07);
+
+    &:hover {
+      background-color: darken($secondary-color, 8%);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    &:active {
+      transform: translateY(0) scale(1);
+    }
+  }
 }
 
 /* Card-style Layout for Sections */
@@ -114,11 +152,16 @@ button.switch-btn {
 .card {
   background-color: #fff;
   border: 1px solid $border-color;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 20px;
   width: 48%;
   margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: $card-shadow;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 4px 16px rgba(46,204,113,0.08);
+  }
 
   .card-title {
     font-size: 1.2rem;
@@ -134,15 +177,18 @@ button.switch-btn {
 
   .card-button {
     background-color: $secondary-color;
-    padding: 10px;
+    padding: 10px 24px;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     margin-top: 15px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
 
     &:hover {
-      background-color: darken($secondary-color, 10%);
+      background-color: darken($secondary-color, 8%);
+      transform: translateY(-2px) scale(1.03);
     }
   }
 }
@@ -152,7 +198,7 @@ button.switch-btn {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: $card-shadow;
 }
 
 .file-upload input[type="file"] {
@@ -167,49 +213,51 @@ button.switch-btn {
   margin-top: 20px;
 }
 
-input[type="file"] {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid $ccc;
-  border-radius: 4px;
-}
-
 .file-upload .btn-upload-file {
-  padding: 10px 20px;
+  padding: 10px 24px;
   background-color: $primary-color;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-
-  &:hover {
-    background-color: darken($primary-color, 10%);
-  }
-}
-
-/* Toggle between Create and Existing Category */
-.toggle-category {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.toggle-category button {
-  padding: 12px 20px;
-  background-color: $secondary-color;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+  font-weight: 600;
+  transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
-    background-color: darken($secondary-color, 10%);
-    transform: translateY(-2px);
+    background-color: $hover-color;
+    transform: translateY(-2px) scale(1.03);
+  }
+}
+
+/* Layout and Spacing */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .section {
+    padding: 12px;
+    border-radius: 8px;
   }
 
-  &:active {
-    transform: translateY(0);
+  .page-header h1 {
+    font-size: 1.2rem;
+    padding: 10px 12px;
+  }
+
+  button, .btn-switch-green {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  .card {
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px;
   }
 }
 

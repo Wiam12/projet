@@ -1,43 +1,113 @@
+/* --- Variables --- */
+$primary-color: #3498db;
+$secondary-color: #06d6a0;
+$background-color: #f8fafc;
+$border-color: #e0e3e7;
+$text-color: #22223b;
+$card-shadow: 0 2px 8px rgba(0,0,0,0.07);
+$hover-color: darken($primary-color, 8%);
+
+/* --- Conteneur principal --- */
 .acceptance-term-container {
+  font-family: 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 24px;
+
+  .page-header {
+    h1 {
+      background: linear-gradient(90deg, $primary-color 60%, $secondary-color 100%);
+      color: white;
+      padding: 18px 28px;
+      border-radius: 10px;
+      box-shadow: $card-shadow;
+      margin-bottom: 28px;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+  }
+
+  /* --- Titres de sections --- */
+  h2 {
+    color: $primary-color;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    border-left: 5px solid $secondary-color;
+    padding-left: 14px;
+    background-color: transparent;
+  }
+
   .section {
-    margin-bottom: 20px;
+    margin-bottom: 32px;
+    padding: 24px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: $card-shadow;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(58,134,255,0.08);
+    }
   }
 
+  /* --- Formulaires (input) --- */
   .form-group {
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+
+    label {
+      font-size: 1rem;
+      color: $primary-color;
+      font-weight: 500;
+      margin-bottom: 4px;
+      transition: color 0.3s;
+    }
+
+    input[type="text"], input[type="file"] {
+      padding: 14px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      background-color: #fff;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba(58,134,255,0.15);
+      }
+    }
+  }
+ $secondary-color: #2ecc71; // Vert classique
+
+.btn-switch-green {
+  background-color: $secondary-color;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(46,204,113,0.07);
+  transition: background-color 0.3s, transform 0.2s;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background-color: darken($secondary-color, 8%);
+    transform: translateY(-2px) scale(1.03);
+  }
+  &:active {
+    transform: translateY(0) scale(1);
   }
 
-  .form-group label {
-    display: block;
-    font-weight: bold;
-  }
-
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-
-  .btn-template-download,
-  .btn-upload-file {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-  .toggle-category button {
-    padding: 10px 20px;
-    background-color: #f1f1f1;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-
-  .toggle-category button:hover {
-    background-color: #ddd;
   }
 }
+
+
+
+
+

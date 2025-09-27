@@ -130,8 +130,9 @@ import Inputmaskses from './container/forms/formelements/inputmasks/inputmasks.j
 import AccountProjectName from "./container/app/Subdatabase/Account-ProjectName.jsx";
 import CategoryItems from "./container/app/Subdatabase/Category-Item.jsx";
 import AcceptanceTerm from "./container/app/Subdatabase/Acceptance-Term.jsx";
+import ScsPoDatabase from "./container/app/Subdatabase/Scs-Po-Database.jsx";
+import ScsAcceptance from "./container/app/Subdatabase/Scs-Acceptance.jsx";
 
- 
 
 
 window.global = window; // Polyfill for global
@@ -150,6 +151,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path={`${import.meta.env.BASE_URL}Subdatabase/Account-ProjectName`} element={<AccountProjectName />} />
             <Route path={`${import.meta.env.BASE_URL}Subdatabase/Category-Item`} element={<CategoryItems/>} />
            <Route path={`${import.meta.env.BASE_URL}Subdatabase/AcceptanceTerm`} element={<AcceptanceTerm/>} />
+               <Route path={`${import.meta.env.BASE_URL}Subdatabase/Scs-Po-Database`} element={<ScsPoDatabase/>} />
+               <Route path={`${import.meta.env.BASE_URL}Subdatabase/Scs-Acceptance`} element={<ScsAcceptance />} />
             <Route path={`${import.meta.env.BASE_URL}apps/draggable-cards`} element={<Draggablecards />} />
             <Route path={`${import.meta.env.BASE_URL}apps/full-calendar`} element={<Fullcalendar />} />
             <Route path={`${import.meta.env.BASE_URL}apps/notification`} element={<Notifications />} />

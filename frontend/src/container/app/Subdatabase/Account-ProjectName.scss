@@ -1,10 +1,11 @@
 /* --- Variables --- */
-$primary-color: #3498db;      /* Bleu clair */
-$secondary-color: #2ecc71;    /* Vert clair */
-$background-color: #ecf0f1;   /* Gris clair */
-$border-color: #bdc3c7;       /* Gris pour bordures */
-$text-color: #2c3e50;         /* Gris foncé pour texte */
-$hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$background-color: #ecf0f1;
+$border-color: #bdc3c7;
+$text-color: #2c3e50;
+$hover-color: darken($primary-color, 10%);
+$card-shadow: 0 2px 8px rgba(0,0,0,0.07);
 
 /* --- Conteneur général de la page --- */
 .account-project-container {
@@ -18,13 +19,14 @@ $hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
     h1 {
       background-color: $primary-color;
       color: white;
-      padding: 16px 24px;
-      border-radius: 8px;
+      padding: 18px 28px;
+      border-radius: 10px;
       text-align: left;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      margin: 0 0 20px;
-      font-size: 1.35rem;
-      font-weight: 600;
+      box-shadow: $card-shadow;
+      margin: 0 0 24px;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
   }
 
@@ -33,28 +35,32 @@ $hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
     color: $text-color;
     padding: 10px;
     text-align: left;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     font-size: 1.2rem;
     font-weight: bold;
-    line-height: 1.4;
     border-left: 6px solid $primary-color;
-    padding-left: 12px;
+    padding-left: 14px;
     background-color: transparent;
   }
 
   /* --- Cartes/sections principales --- */
   .section {
-    margin-bottom: 24px;
-    padding: 20px;
+    margin-bottom: 32px;
+    padding: 24px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    box-shadow: $card-shadow;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(52,152,219,0.08);
+    }
 
     /* --- Paragraphes dans les sections --- */
     p {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       color: darken($text-color, 8%);
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
   }
 
@@ -62,8 +68,8 @@ $hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
   .form-group {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 14px;
+    gap: 12px;
+    margin-bottom: 18px;
 
     label {
       font-size: 1rem;
@@ -72,7 +78,7 @@ $hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
     }
 
     input[type="text"], input[type="file"] {
-      padding: 12px;
+      padding: 14px;
       margin-top: 8px;
       margin-bottom: 16px;
       border: 1px solid $border-color;
@@ -80,37 +86,37 @@ $hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
       width: 100%;
       max-width: 350px;
       background-color: white;
-      transition: border-color 0.3s ease, background-color 0.3s ease;
+      transition: border-color 0.3s, box-shadow 0.3s;
 
       &:focus {
         border-color: $primary-color;
-        background-color: #d5eaf7;
+        box-shadow: 0 0 0 2px rgba(52,152,219,0.15);
         outline: none;
       }
     }
   }
 
   /* --- Boutons --- */
-  button {
-    padding: 12px 20px;
+  button, .switch-btn {
+    padding: 14px 24px;
     background-color: $primary-color;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-
-    /* Ajout d'un espacement au-dessus du bouton */
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 6px rgba(52,152,219,0.07);
     margin-top: 16px;
 
     &:hover {
       background-color: $hover-color;
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.03);
     }
 
     &:active {
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 
@@ -148,16 +154,46 @@ $hover-color: darken($primary-color, 10%); /* Survol couleur pour boutons */
 
     button {
       background-color: $secondary-color;
-      padding: 12px 20px;
+      padding: 14px 24px;
       color: white;
       border: none;
       border-radius: 8px;
-      cursor: pointer;
       font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 2px 6px rgba(46,204,113,0.07);
 
       &:hover {
         background-color: darken($secondary-color, 10%);
+        transform: translateY(-2px) scale(1.03);
       }
+
+      &:active {
+        transform: translateY(0) scale(1);
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .account-project-container {
+    padding: 8px;
+
+    .section {
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .page-header h1 {
+      font-size: 1.2rem;
+      padding: 10px 12px;
+    }
+
+    button, .switch-btn {
+      padding: 10px 14px;
+      font-size: 0.95rem;
     }
   }
 }

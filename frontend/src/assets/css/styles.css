@@ -27024,7 +27024,7 @@ hr {
 }
 
 /* End:: Custom */
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 768px) {
   [data-nav-layout=horizontal][data-nav-style=menu-click] .app-sidebar .slide.has-sub .slide-menu.child2.force-left, [data-nav-layout=horizontal][data-nav-style=menu-click] .app-sidebar .slide.has-sub .slide-menu.child3.force-left, [data-nav-layout=horizontal][data-nav-style=menu-hover] .app-sidebar .slide.has-sub .slide-menu.child2.force-left, [data-nav-layout=horizontal][data-nav-style=menu-hover] .app-sidebar .slide.has-sub .slide-menu.child3.force-left, [data-nav-layout=horizontal][data-nav-style=icon-click] .app-sidebar .slide.has-sub .slide-menu.child2.force-left, [data-nav-layout=horizontal][data-nav-style=icon-click] .app-sidebar .slide.has-sub .slide-menu.child3.force-left, [data-nav-layout=horizontal][data-nav-style=icon-hover] .app-sidebar .slide.has-sub .slide-menu.child2.force-left, [data-nav-layout=horizontal][data-nav-style=icon-hover] .app-sidebar .slide.has-sub .slide-menu.child3.force-left {
     inset-inline-start: -100% !important;
   }
@@ -27086,6 +27086,23 @@ hr {
   text-align: end;
   margin-inline-start: auto;
 }
+.project-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow cards to wrap if necessary */
+  gap: 20px; /* Space between cards */
+  justify-content: space-between; /* Distribute cards evenly */
+}
+
+.project-card {
+  flex: 1 1 22%; /* Cards take up 22% of the container */
+  min-width: 250px; /* Ensure cards don’t get too small */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Optional: shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
 
 .projects-stat .project-names h6 {
   width: 38px;
@@ -27196,6 +27213,7 @@ hr {
   border-left-width: 0;
   border-right-width: 0;
   position: relative;
+  margin-bottom: 15px;
 }
 .card-dashboard-events .list-group-item label {
   text-transform: uppercase;
@@ -27206,7 +27224,7 @@ hr {
   letter-spacing: 0.5px;
 }
 .card-dashboard-events .list-group-item h6 {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--default-text-color);
   margin-bottom: 5px;
@@ -27328,7 +27346,7 @@ hr {
   border-color: transparent;
 }
 
-@media (max-width: 400px) {
+@media (max-width:768px) {
   .latest-tasks .add-delete-task {
     display: none !important;
   }

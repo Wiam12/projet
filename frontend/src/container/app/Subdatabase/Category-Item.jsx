@@ -34,7 +34,7 @@ const CategoryItems = () => {
 
       {/* Category Creation Section */}
       <section className="section account-creation">
-        <h2>1. Create Category</h2>
+        <h2>1.Category items </h2>
         <p>Choose whether to create a new category or use an existing one.</p>
         {isCategoryCreated ? (
           <div className="form-group">

@@ -7,6 +7,7 @@ const AccountProjectName = () => {
   const [existedAccount, setExistedAccount] = useState("");
   const [isAccountCreated, setIsAccountCreated] = useState(true);
   const [file, setFile] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState(""); // Add this state
 
   const handleSaveAccountProject = () => {
     if (isAccountCreated) {
@@ -22,10 +23,37 @@ const AccountProjectName = () => {
     if (f) console.log("File uploaded:", f.name);
   };
 
+  const handleFileSubmit = async () => {
+    if (!file) {
+      setUploadStatus("Please select a file first.");
+      return;
+    }
+    setUploadStatus("Uploading...");
+    const accessToken = localStorage.getItem("access_token");
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("https://new-production-351f.up.railway.app/api/upload", {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          Authorization: `Bearer ${accessToken}`,
+          // Do NOT set Content-Type here; browser will set it for multipart/form-data
+        },
+        body: formData,
+      });
+      if (!res.ok) throw new Error("Upload failed");
+      setUploadStatus("Upload successful!");
+    } catch (err) {
+      setUploadStatus("Upload failed: " + err.message);
+    }
+  };
+
   return (
     <div className="account-project-container">
       <header className="page-header">
-        <h1>Sub-Database : Account - Project Name</h1>
+        
       </header>
 
       {/* 1. Account Creation */}
@@ -110,7 +138,8 @@ const AccountProjectName = () => {
           {file && <span className="file-name">File: {file.name}</span>}
         </div>
 
-        <button className="btn-upload-file">Upload File</button>
+        <button className="btn-upload-file" onClick={handleFileSubmit}>Upload File</button>
+        {uploadStatus && <div className="upload-status">{uploadStatus}</div>}
       </section>
 
       {/* Toggle Account Creation */}

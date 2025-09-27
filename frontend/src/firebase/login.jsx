@@ -33,12 +33,38 @@ const Login = ({ ThemeChanger }) => {
         auth.signInWithEmailAndPassword(email, password).then(
             user => { console.log(user); routeChange(); }).catch(err => { console.log(err); setError(err.message); });
     };
-    const Login1 = () => {
-        if (data.email == "adminreact@gmail.com" && data.password == "1234567890") {
-            routeChange();
-        }
-        else {
-            setError("The Auction details did not Match");
+    const Login1 = async () => {
+        try {
+            const response = await fetch('https://new-production-351f.up.railway.app/login', {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    grant_type: '',
+                    username: data.email,
+                    password: data.password,
+                    scope: '',
+                    client_id: '',
+                    client_secret: '',
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Invalid credentials');
+            }
+
+            const result = await response.json();
+            if (result.access_token) {
+                console.log('Access Token:', result.access_token);
+                localStorage.setItem('access_token', result.access_token); // Save token to local storage
+                routeChange();
+            } else {
+                setError("Login failed: No access token received");
+            }
+        } catch (err) {
+            setError("Login failed: " + err.message);
             setData({
                 "email": "adminreact@gmail.com",
                 "password": "1234567890",

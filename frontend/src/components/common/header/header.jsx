@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { Badge, Dropdown, Form, ListGroup, Modal, Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MenuItems } from '../sidebar/sidemenu/sidemenu';
 import { connect } from "react-redux";
 import { ThemeChanger } from "../../../redux/action";
@@ -23,6 +23,8 @@ import face6 from "../../../../src/assets/images/faces/6.jpg";
 import store from '../../../redux/store';
 
 const Header = ({ local_varaiable, ThemeChanger }) => {
+
+    const navigate = useNavigate();
 
     ///****fullscreeen */
     const [fullScreen, setFullScreen] = useState(false);
@@ -450,6 +452,17 @@ const Header = ({ local_varaiable, ThemeChanger }) => {
 		}
 	};
 
+    const routeChange = () => {
+        const path = `${import.meta.env.BASE_URL}`;
+        navigate(path);
+    };
+
+    // Logout handler
+    const handleLogout = () => {
+        localStorage.removeItem('access_token');
+        routeChange();
+    };
+
     return (
         <Fragment>
             <header ref={headerRef} className={`app-header ${isSticky ? "sticky-pin" : ""}`}>
@@ -859,8 +872,14 @@ const Header = ({ local_varaiable, ThemeChanger }) => {
                                     </Link>
                                     <Link className='dropdown-item' to={`${import.meta.env.BASE_URL}pages/setting`}><i className="fa fa-sliders-h me-1"></i> Account Settings
                                     </Link>
-                                    <Link className='dropdown-item' to={`${import.meta.env.BASE_URL}custompages/sign-in`}><i className="fa fa-sign-out-alt me-1"></i> Sign Out
-                                    </Link>
+                                    <button
+    type="button"
+    className="dropdown-item"
+    onClick={handleLogout}
+    style={{ background: 'none', border: 'none', padding: '0.5rem 1rem', width: '100%', textAlign: 'left' }}
+>
+    <i className="fa fa-sign-out-alt me-1"></i> Sign Out
+</button>
                                 </div>
                             </Dropdown.Menu>
                         </Dropdown>
